@@ -18,21 +18,19 @@ function App() {
 		setCart([...cart, item]);
 	};
 
-	const removeItem = id => {
-		console.log('remove item', id);
-		let tempCart = cart.filter( cartItem => {
-			return cartItem.id !== id
-		});
+	const removeItem = arrIndex => {
+		let tempCart = [...cart];
+		tempCart.splice(arrIndex, 1);
 		setCart(tempCart);
 	}
 
 	return (
 		<div className="App">
-			<CartContext.Provider value={{ cart: cart, removeItem: removeItem }}>
+			<CartContext.Provider value={{ cart, removeItem }}>
 				<Navigation />
 
 				{/* Routes */}
-				<ProductContext.Provider value={{ products: products, addItem: addItem }}>
+				<ProductContext.Provider value={{ products, addItem }}>
 					<Route exact path="/" component={Products} />
 				</ProductContext.Provider>
 
