@@ -18,10 +18,10 @@ function App() {
 		setCart([...cart, item]);
 	};
 
-	const removeItem = item => {
-		console.log('remove item', item);
+	const removeItem = id => {
+		console.log('remove item', id);
 		let tempCart = cart.filter( cartItem => {
-			return cartItem.id !== item.id
+			return cartItem.id !== id
 		});
 		setCart(tempCart);
 	}
